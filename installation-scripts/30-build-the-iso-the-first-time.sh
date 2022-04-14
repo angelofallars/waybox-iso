@@ -232,18 +232,6 @@ echo
 echo
 echo "################################################################## "
 tput setaf 2
-echo "Phase 6 :"
-echo "- Cleaning the cache from /var/cache/pacman/pkg/"
-tput sgr0
-echo "################################################################## "
-echo
-
-	echo "Cleaning the cache from /var/cache/pacman/pkg/"
-	yes | sudo pacman -Scc
-
-echo
-echo "################################################################## "
-tput setaf 2
 echo "Phase 7 :"
 echo "- Building the iso - this can take a while - be patient"
 tput sgr0
