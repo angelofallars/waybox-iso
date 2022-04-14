@@ -1,6 +1,7 @@
 #!/bin/sh
 
 mkdir -p ./build
+mkdir -p ~/.arch-pacman-cache/
 
 sudo docker run --privileged \
                 --mount type=bind,source="$(pwd)"/build,target=/root/Alci-Iso-Out \
