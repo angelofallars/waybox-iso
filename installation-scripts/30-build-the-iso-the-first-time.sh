@@ -38,7 +38,7 @@ echo
 	archisoRequiredVersion="archiso 62.1-1"
 	buildFolder=$HOME"/alci-build"
 	outFolder=$HOME"/Alci-Iso-Out"
-	archisoVersion=$(sudo pacman -Q archiso)
+	archisoVersion=$(pacman -Q archiso)
 
 	echo "################################################################## "
 	#echo "Building the desktop                   : "$desktop
@@ -60,7 +60,7 @@ echo
 	tput setaf 1
 	echo "###################################################################################################"
 	echo "You need to install the correct version of Archiso"
-	echo "Use 'sudo downgrade archiso' to do that"
+	echo "Use 'downgrade archiso' to do that"
 	echo "or update your system"
 	echo "If a new archiso package comes in and you want to test if you can still build"
 	echo "the iso then change the version in line 37."
@@ -126,10 +126,10 @@ echo
 
 	echo
 	echo "Saving current archiso version to archiso.md"
-	sudo sed -i "s/\(^archiso-version=\).*/\1$archisoVersion/" ../archiso.md
+	sed -i "s/\(^archiso-version=\).*/\1$archisoVersion/" ../archiso.md
 	echo
 	echo "Making mkarchiso verbose"
-	sudo sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
+	sed -i 's/quiet="y"/quiet="n"/g' /usr/bin/mkarchiso
 
 echo
 echo "################################################################## "
@@ -142,7 +142,7 @@ echo "################################################################## "
 echo
 
 	echo "Deleting the build folder if one exists - takes some time"
-	[ -d $buildFolder ] && sudo rm -rf $buildFolder
+	[ -d $buildFolder ] && rm -rf $buildFolder
 	echo
 	echo "Copying the Archiso folder to build work"
 	echo
@@ -177,7 +177,7 @@ echo
 #	cp -f ../archiso/packages.x86_64 $buildFolder/archiso/packages.x86_64
 #	echo
 #	echo "Changing group for polkit folder"
-#	sudo chgrp polkitd $buildFolder/archiso/airootfs/etc/polkit-1/rules.d
+#	chgrp polkitd $buildFolder/archiso/airootfs/etc/polkit-1/rules.d
 #	#is not working so fixing this during calamares installation
 
 # echo
@@ -226,7 +226,7 @@ echo
 # 	echo "Adding time to /etc/dev-rel"
 # 	date_build=$(date -d now)
 # 	echo "Iso build on : "$date_build
-# 	sudo sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/archiso/airootfs/etc/dev-rel
+# 	sed -i "s/\(^ISO_BUILD=\).*/\1$date_build/" $buildFolder/archiso/airootfs/etc/dev-rel
 
 
 echo
@@ -240,7 +240,7 @@ echo
 
 	[ -d $outFolder ] || mkdir $outFolder
 	cd $buildFolder/archiso/
-	sudo mkarchiso -v -w $buildFolder -o $outFolder $buildFolder/archiso/
+	mkarchiso -v -w $buildFolder -o $outFolder $buildFolder/archiso/
 
 
 
@@ -285,7 +285,7 @@ echo "################################################################## "
 echo
 
 	#echo "Deleting the build folder if one exists - takes some time"
-	#[ -d $buildFolder ] && sudo rm -rf $buildFolder
+	#[ -d $buildFolder ] && rm -rf $buildFolder
 
 echo
 echo "##################################################################"
